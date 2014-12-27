@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-md-offset-3 col-md-5">
+		
+
+<h2>Editar perfil <%= current_user.name.capitalize %></h2>
+
+<%= form_for @perfil, :url => {:action => :update}, :html => { :method => :put } do |f| %>
+	<% if @perfil.errors.any? %>
+		<div class="alert alert-error">
+			<a class="close" data-dismiss="alert">&#215;</a>
+			<h2><%= pluralize(@perfil.errors.count, "error") %></h2>
+
+			<ul>
+				<% @perfil.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+		<div class="form-group">
+			<%= f.label :nombre %>
+			<%= f.text_field :nombre, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :apellidos %>
+			<%= f.text_field :apellidos, class: 'form-control'  %>		
+		</div>
+		<div class="form-group">
+			<%= f.label :ciudad %>
+			<%= f.text_field :ciudad, class: 'form-control'  %>		
+		</div>
+		<div class="form-group">
+			<%= f.label :sexo %><br/>
+			<label>
+			<%= f.radio_button :sexo, "Hombre" %> Hombre
+			</label>
+			<label>
+			<%= f.radio_button :sexo, "Mujer" %> Mujer
+			</label>
+		</div>
+		<div class="form-group">
+			<%= f.label :fecha_nacimiento, "Fecha de nacimiento" %>
+			<%= f.date_select :fecha_nacimiento,
+			{:start_year => 1930,
+			:end_year => Time.now.year,
+			:include_blank => true,
+			:order => [:day, :month, :year],
+			:with_css_classes => true}%>
+		</div>
+		<%= f.submit "Actualizar", class: "btn btn-primary" %>
+<% end %>
+<br/>
+<%= link_to "Atras", :back, class: "btn btn-default" %>
+	</div>
+</div>

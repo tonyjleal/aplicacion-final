@@ -1,16 +1,10 @@
 <div class="container">
   <div class="row">
-    <h3>Users</h3>
-    <div class="column">
-      <table class="table">
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <%= render user %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+    <h3>Configuración Cuenta</h3>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="nav-header">Menú Usuario</li>
+        <li><%= link_to 'Información Básica', edit_user_registration_path %></li>
+        <li><%= link_to 'Editar Perfil', perfil_path(current_user) %></li>
+      </ul>
   </div>
 </div>

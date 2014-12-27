@@ -5,12 +5,14 @@
 # below each fixture, per the syntax in the comments below
 #
 one: 
- id: 4
- email: "rails@prueba.com"
- encrypted_password: <%= BCrypt::Password.create('12345678') %>
- name: "rails_curso"
+ id: 3
+ user_id: 4
+ nombre: "Antonio"
+ apellidos: "Leal"
+ sexo: "Hombre"
+ fecha_nacimiento: 1982-10-07
+ ciudad: "Alicante"
 # column: value
 #
-#two: {}
-#  column: value
 
+#  column: value
