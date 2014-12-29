@@ -6,7 +6,7 @@
 
 <%= form_for @perfil, :url => {:action => :update}, :html => { :method => :put } do |f| %>
 	<% if @perfil.errors.any? %>
-		<div class="alert alert-error">
+		<div class="alert alert-danger">
 			<a class="close" data-dismiss="alert">&#215;</a>
 			<h2><%= pluralize(@perfil.errors.count, "error") %></h2>
 

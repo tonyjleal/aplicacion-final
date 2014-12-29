@@ -6,20 +6,31 @@ class PerfilController < ApplicationController
 
   def show
 	@usuario = User.find(current_user)
-	@usuario.perfil ||= @usuario.build_perfil
+	@usuario.build_perfil if @usuario.perfil.nil?
 	@perfil = @usuario.perfil
   end
 
   def update
 		@usuario = User.find(current_user)
-		@perfil = Perfil.new(perfiles_params)
-		@usuario.perfil ||= @usuario.build_perfil
+		@usuario.build_perfil if @usuario.perfil.nil?
 
 		respond_to do |format|
-			if @usuario.create_perfil(perfiles_params)
-				format.html {redirect_to @usuario, notice: 'Datos Actualizados'}
-			else
-				format.html { render action: "show" }
+			if request.put?
+				if(@usuario.perfil.id.nil?)
+					if @usuario.create_perfil(perfiles_params).save
+						format.html {redirect_to @usuario, notice: 'Perfil creado correctamente'}
+					else
+						@perfil = @usuario.perfil
+						format.html { render action: "show" }
+					end
+				else
+					if @usuario.perfil.update_attributes(perfiles_params)
+						format.html {redirect_to @usuario, notice: 'Datos actualizados correctamente'}
+					else
+						@perfil = @usuario.perfil
+						format.html { render action: "show" }
+					end
+				end
 			end
 		end
   end
