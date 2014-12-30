@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :perfil, :only => [:index, :show, :update]
 
   get 'nombre/:nombre' => 'users#show'
+  get "contacto/:id" => 'users#contacto'
+  post "contacto/:id" => 'users#contacto'
 end
