@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :show
 
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to :back, :alert => "Access denied."
+  	if params[:id]
+    	@user = User.find_by(id: params[:id])
+    else
+    	@user = User.find_by(name: params[:nombre])
     end
   end
 

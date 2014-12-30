@@ -5,7 +5,7 @@ class UserPerfilTest < ActionDispatch::IntegrationTest
 	test 'Entrar y salir session' do
 
 		#Visitar login y validarme como usuario
-		post_via_redirect user_session_path, :user => { :email => users(:one).email, :password => '12345678'}
+		post_via_redirect user_session_path, :user => { :email => users(:uno).email, :password => '12345678'}
 		assert_equal '/', path
 		assert_equal flash[:notice], 'Ha iniciado sesión satisfactoriamente.'
 
@@ -17,7 +17,7 @@ class UserPerfilTest < ActionDispatch::IntegrationTest
 
 	test 'Login y entrar a configuración básica' do
 		#Visitar login y validarme como usuario
-		post_via_redirect user_session_path, :user => { :email => users(:one).email, :password => '12345678'}
+		post_via_redirect user_session_path, :user => { :email => users(:uno).email, :password => '12345678'}
 		assert_equal '/', path
 		assert_equal flash[:notice], 'Ha iniciado sesión satisfactoriamente.'
 
@@ -28,12 +28,12 @@ class UserPerfilTest < ActionDispatch::IntegrationTest
 
 	test 'login y entrar al perfil' do
 		#Visitar login y validarme como usuario
-		post_via_redirect user_session_path, :user => { :email => users(:one).email, :password => '12345678'}
+		post_via_redirect user_session_path, :user => { :email => users(:uno).email, :password => '12345678'}
 		assert_equal '/', path
 		assert_equal flash[:notice], 'Ha iniciado sesión satisfactoriamente.'
 
 		#Entrar al perfil
-		usuario = Perfil.where(:nombre => perfiles(:one).nombre)
+		usuario = Perfil.where(:nombre => perfiles(:uno).nombre)
 		get perfil_path(usuario)
 		assert_response :success
 	end

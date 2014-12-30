@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :perfil, :only => [:index, :show, :update]
+
+  get 'nombre/:nombre' => 'users#show'
 end

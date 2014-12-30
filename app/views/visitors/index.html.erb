@@ -1,2 +1,27 @@
 <h3>Bienvenido</h3>
 <p><%= link_to 'Usuarios:', users_path %> <%= pluralize(User.count, "registrado") %></p>
+
+<h2>Usuarios Registrados</h2>
+
+<% @users.each do |user| %>
+	<div class="content">
+		<div class="row">
+			<!-- avatar -->
+			<div class="col-xs-1">
+				<%= link_to gravatar_image_tag(user.email, alt: user.name), user_path(user) %> 
+			</div>
+			<!-- fin avatar -->
+			<!-- nombre y descripción usuario -->
+			<div class="col-xs-5">
+				<strong><%= user.name.capitalize %></strong>
+				<p><small>
+					<%= ciudad_usuario(user) %>
+				</small></p>
+			</div>
+			<!-- fin descripción -->
+		</div>
+	</div>
+	<p>Usuario: <%= link_to user.name, user %></p>
+<% end %>
+
+<%= will_paginate @users %>

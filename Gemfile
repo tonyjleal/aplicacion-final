@@ -16,6 +16,10 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'rails_12factor'
+#gravatar
+gem 'gravatar_image_tag'
+#paginación
+gem 'will_paginate'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
