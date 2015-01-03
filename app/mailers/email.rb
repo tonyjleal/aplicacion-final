@@ -18,6 +18,7 @@ class Email < ActionMailer::Base
   def solicitar_amistad(usuario, amigo)
     @usuario = usuario
     @amigo = amigo
+    @url = "https://warm-oasis-9425.herokuapp.com"
     mail to: @amigo.email,
           subject: "Solicitud de amistad de #{amigo.name}"
   end
