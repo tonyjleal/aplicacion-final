@@ -18,9 +18,11 @@
 </div>
 <div class="row">
 	<div class="col-xs-4">
-		<%= link_amistad(current_user, @user) %>
-		<% if !existe_amistad?(current_user, @user) %>
-		<!-- Comprobar si existe amistad, sino mostrar el enlace -->
+		<% if current_user %>
+			<%= link_amistad(current_user, @user) %>
+		<% end %>
+		<!-- <% if !existe_amistad?(current_user, @user) %>
+		 Comprobar si existe amistad, sino mostrar el enlace -->
 		<!--<%= link_to "Petición de amistad a #{@user.name}", {:controller => "amistad", :action => "crear", :id => @user }, :confirm => "¿Realmente quiere solitar su amistad?" %>
 		<% end %>-->
 	</div>
