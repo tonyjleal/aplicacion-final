@@ -13,7 +13,9 @@
 			<!-- fin avatar -->
 			<!-- nombre y descripción usuario -->
 			<div class="col-xs-5">
-				<strong><%= user.name.capitalize %></strong>
+				<strong><%= user.name.capitalize %>  
+					<%= link_amistad(current_user, user) %>
+				</strong>
 				<p><small>
 					<%= ciudad_usuario(user) %>
 				</small></p>

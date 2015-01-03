@@ -26,4 +26,8 @@ module ApplicationHelper
 	def comprobar(params)
 		!params[:asunto].blank? and !params[:mensaje].blank? and Email.enviar(params).deliver
 	end
+
+	def existe_amistad?(usuario, amigo)
+		Amigo.existe_amistad?(usuario,amigo)
+	end
 end
