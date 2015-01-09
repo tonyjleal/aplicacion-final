@@ -1,0 +1,22 @@
+
+	<h3>Listado de amigos</h3>
+<% if tiene_amigos?(usuario) %>
+  <% amigo = usuario.amigo.paginate(:page => params[:page], :per_page => 6) %>
+	<% amigo.each do |usuario| %>
+    <% if usuario.estado.eql?("Aceptado") %>
+			<p>
+				<div class="row">
+					<div class="col-xs-3">
+						<%= link_to gravatar_image_tag(usuario.amistad.email, alt: usuario.amistad.name, class: 'thumbnail', :gravatar => { size: 50 }), user_path(usuario.amistad) %>
+					</div>
+					<div class="col-xs-2">
+						<%= usuario.amistad.name %><br/>
+						<%= link_to 'Ir perfil', user_path(usuario.amistad) %>
+            <%= usuario.estado %>
+					</div>
+				</div>
+			</p>
+    <% end %>
+	<% end %>
+  <%= will_paginate amigo %>
+<% end %>

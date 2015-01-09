@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   post 'contacto/:id' => 'users#contacto'
   get 'amistades/crear/:id' => 'amistad#crear'
   get 'amistades/aceptar/:nombre' => 'amistad#aceptar'
+  get 'amistades/denegar/:nombre' => 'amistad#rechazar'
   
 end

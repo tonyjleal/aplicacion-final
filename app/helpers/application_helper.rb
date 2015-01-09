@@ -31,14 +31,7 @@ module ApplicationHelper
 		Amigo.existe_amistad?(usuario,amigo)
 	end
 
-	def link_amistad(usuario, amigo)
-		hay_amistad = Amigo.existe_amistad?(usuario,amigo) 
-		if Amigo.solicitud_enviada?(usuario,amigo) and !hay_amistad
-			'<span class="glyphicon glyphicon-exclamation-sign text-warning"></span><span class="text-warning">Solicitud pendiente</span>'.html_safe
-		elsif !hay_amistad
-			link_to "+ Agregar amigos", {:controller => "amistad", :action => "crear", :id => amigo }, :confirm => "¿Realmente quiere solitar su amistad?" 
-		else
-			'<span class="glyphicon glyphicon-ok text-success">Amigo</span>'.html_safe
-		end
+	def tiene_amigos?(usuario)
+		!usuario.amigo.empty?
 	end
 end

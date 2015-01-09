@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   	if params[:id]
     	@user = User.find_by(id: params[:id])
     else
-    	@user = User.find_by(name: params[:nombre].capitalize)
+    	@user = User.find_by(name: params[:nombre])
     end
   end
 

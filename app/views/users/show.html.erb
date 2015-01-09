@@ -15,16 +15,17 @@
 			<%= render :partial => "users/contacto", :locals => {:destinatario => @user.email, :usuario => @user } %>
 		</p>
 	</div>
+  	<div class="col-xs-3">
+  		 <!-- Listado de los usuarios -->
+		<%= render :partial => 'listado_amigos', :locals => {:usuario => @user} %>
+  	</div>
 </div>
 <div class="row">
 	<div class="col-xs-4">
-		<% if current_user %>
-			<%= link_amistad(current_user, @user) %>
+		<% if !existe_amistad?(current_user, @user)%>
+			 <!--Comprobar si existe amistad, sino mostrar el enlace -->
+			<%= link_to "Petición de amistad a #{@user.name}", { controller: "amistad", action: "crear", id: @user }, confirm: "¿Realmente quiere solitar su amistad?" %>
 		<% end %>
-		<!-- <% if !existe_amistad?(current_user, @user) %>
-		 Comprobar si existe amistad, sino mostrar el enlace -->
-		<!--<%= link_to "Petición de amistad a #{@user.name}", {:controller => "amistad", :action => "crear", :id => @user }, :confirm => "¿Realmente quiere solitar su amistad?" %>
-		<% end %>-->
 	</div>
 </div>
 <% else %>

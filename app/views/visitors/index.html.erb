@@ -14,9 +14,6 @@
 			<!-- nombre y descripción usuario -->
 			<div class="col-xs-5">
 				<strong><%= user.name.capitalize %>  
-					<% if current_user %>
-						<%= link_amistad(current_user, user) %>
-					<% end %>
 				</strong>
 				<p><small>
 					<%= ciudad_usuario(user) %>

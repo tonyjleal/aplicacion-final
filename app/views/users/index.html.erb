@@ -1,10 +1,20 @@
 <div class="container">
   <div class="row">
-    <h3>Configuración Cuenta</h3>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="nav-header">Menú Usuario</li>
-        <li><%= link_to 'Información Básica', edit_user_registration_path %></li>
-        <li><%= link_to 'Editar Perfil', perfil_path(current_user) %></li>
-      </ul>
+  	<div class="col-xs-3">
+	    <h3>Configuración Cuenta</h3>
+	      <ul class="nav nav-pills nav-stacked">
+	        <li class="nav-header">Menú Usuario</li>
+	        <li><%= link_to 'Información Básica', edit_user_registration_path %></li>
+	        <li><%= link_to 'Editar Perfil', perfil_path(current_user) %></li>
+	      </ul>
+  	</div>
+  	<!-- Mostrar Avatar del usuario -->
+  	<div class="col-xs-3">
+  		<%= gravatar_image_tag(current_user.email, alt: current_user.name, class: 'thumbnail', :gravatar => { size: 300 }) %>
+  	</div>
+    <!-- Listado de los usuarios -->
+  	<div class="col-xs-3">
+		  <%= render partial: 'listado_amigos', :locals => { usuario: current_user } %>
+  	</div>
   </div>
 </div>
